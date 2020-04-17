@@ -19,7 +19,7 @@ npm i -g http-server
 Start the server using the certificate. The following example is for QA environment, change the value after `-a` to test other environment.
 
 ```
-http-server --ssl --cert cert.pem -a kf-qa.netlify.com -p 443 build
+http-server --ssl --cert cert.pem -a kf-qa.netlify.app -p 443 build
 ```
 
-⚠️ Navigate to `https://kf-qa.netlify.com/index.html` to view the page, as the routing is not configured properly. `https://kf-qa.netlify.com/` won't work.
+⚠️ Navigate to `https://kf-qa.netlify.app/index.html` to view the page, as the routing is not configured properly. `https://kf-qa.netlify.app/` won't work.

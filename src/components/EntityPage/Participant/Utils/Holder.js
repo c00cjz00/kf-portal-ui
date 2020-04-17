@@ -30,8 +30,8 @@ class TabButton extends React.Component {
             <div style={{ marginLeft: '10px' }}>{rightIcon}</div>
           </div>
         ) : (
-          tabId
-        )}
+            tabId
+          )}
       </div>
     );
   }
@@ -46,7 +46,7 @@ export default class Holder extends React.Component {
     };
   }
 
-  //interesting https://kf-qa.netlify.com/participant/PT_CMB6TASJ#summary
+  //interesting https://kf-qa.netlify.app/participant/PT_CMB6TASJ#summary
   render() {
     let children;
     let tabIDs;

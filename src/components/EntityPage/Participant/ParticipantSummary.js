@@ -16,13 +16,13 @@ import prettifyAge from './Utils/prettifyAge';
 import BiospecimenIcon from 'icons/BiospecimenIcon';
 import Tooltip from 'uikit/Tooltip';
 import theme from 'theme/defaultTheme';
-//https://kf-qa.netlify.com/participant/PT_CMB6TASJ#summary
+//https://kf-qa.netlify.app/participant/PT_CMB6TASJ#summary
 
 /**
  * Sometimes, intermediate nested fields are missing.
  *
  * Trying to access participant.diagnoses.hits.edges[0].node.diagnosis_category, for example, crashes the page when
- * node is missing. https://kf-qa.netlify.com/participant/PT_3FV3E420#summary
+ * node is missing. https://kf-qa.netlify.app/participant/PT_3FV3E420#summary
  *
  * Syntaxic sugar for _.get with null as default
  *
@@ -212,33 +212,33 @@ const ParticipantSummary = ({ participant }) => {
       {specimens.length === 0 ? (
         ''
       ) : (
-        <div>
-          <EntityContentDivider />
-          <EntityContentSection title="Biospecimens">
-            <Holder biospecimenIdToData={biospecimenIdToTargetProps(specimens)}>
-              {specimens.map(specimenNode => {
-                const specimen = specimenNode.node;
-                const specimenDxsData = getSanitizedSpecimenDxsData(specimen);
-                return (
-                  <React.Fragment key={specimen.kf_id}>
-                    <VariableSummaryTable
-                      key={specimen.kf_id}
-                      label={specimen.kf_id}
-                      rows={specimenSummaryTableData(specimen)}
-                      nbOfTables={2}
-                    />
-                    {specimenDxsData.length > 0 &&
-                      buildSpecimenDxSection({
-                        specimenId: specimen.kf_id,
-                        sanitizedNodes: specimenDxsData,
-                      })}
-                  </React.Fragment>
-                );
-              })}
-            </Holder>
-          </EntityContentSection>
-        </div>
-      )}
+          <div>
+            <EntityContentDivider />
+            <EntityContentSection title="Biospecimens">
+              <Holder biospecimenIdToData={biospecimenIdToTargetProps(specimens)}>
+                {specimens.map(specimenNode => {
+                  const specimen = specimenNode.node;
+                  const specimenDxsData = getSanitizedSpecimenDxsData(specimen);
+                  return (
+                    <React.Fragment key={specimen.kf_id}>
+                      <VariableSummaryTable
+                        key={specimen.kf_id}
+                        label={specimen.kf_id}
+                        rows={specimenSummaryTableData(specimen)}
+                        nbOfTables={2}
+                      />
+                      {specimenDxsData.length > 0 &&
+                        buildSpecimenDxSection({
+                          specimenId: specimen.kf_id,
+                          sanitizedNodes: specimenDxsData,
+                        })}
+                    </React.Fragment>
+                  );
+                })}
+              </Holder>
+            </EntityContentSection>
+          </div>
+        )}
 
       {hasFile ? (
         <div>
@@ -252,8 +252,8 @@ const ParticipantSummary = ({ participant }) => {
                 />
               </EntityContentSection>
             ) : (
-              ''
-            )}
+                ''
+              )}
             <OtherDataTypesSummaryTable
               files={get(participant, 'files.hits.edges', [])}
               participantID={participant.kf_id}
@@ -262,8 +262,8 @@ const ParticipantSummary = ({ participant }) => {
           </EntityContentSection>
         </div>
       ) : (
-        ''
-      )}
+          ''
+        )}
     </React.Fragment>
   );
 };

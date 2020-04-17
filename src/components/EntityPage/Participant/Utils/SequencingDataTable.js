@@ -12,7 +12,7 @@ class SequencingDataTable extends React.Component {
 
     function andCells(arr) {
       function makeCell(wrapper) {
-        if(wrapper.column.Header === 'Strategy') return <div>{wrapper.value}</div>;
+        if (wrapper.column.Header === 'Strategy') return <div>{wrapper.value}</div>;
         if (wrapper.value === 0) return <div></div>;
 
         const url = `/search/file?sqon=
@@ -29,13 +29,13 @@ class SequencingDataTable extends React.Component {
                  }
               },
               ${
-                //string comprehension is weird. Needs direct return type. Wrapping in "instant" lambda works
-                (() => {
-                  const strat = wrapper.row.leftField;
+          //string comprehension is weird. Needs direct return type. Wrapping in "instant" lambda works
+          (() => {
+            const strat = wrapper.row.leftField;
 
-                  if (strat === defaults) return '';
+            if (strat === defaults) return '';
 
-                  return `
+            return `
                     
                     {  
                        "op":"in",
@@ -48,8 +48,8 @@ class SequencingDataTable extends React.Component {
                     },
                     
                   `;
-                })()
-              }
+          })()
+          }
               {  
                  "op":"in",
                  "content":{  
@@ -72,7 +72,7 @@ class SequencingDataTable extends React.Component {
         }
         `;
 
-        return <div style={{textAlign: "center"}}><Link to={sanitizeURL(url)}>{wrapper.value}</Link></div>;
+        return <div style={{ textAlign: "center" }}><Link to={sanitizeURL(url)}>{wrapper.value}</Link></div>;
       }
 
       return arr.map(topObj => {
@@ -87,12 +87,12 @@ class SequencingDataTable extends React.Component {
 
     //Headers of headers: https://codesandbox.io/s/03x3r0vx1l
     this.breakdownCols = andCells([
-      { Header: '', columns: [{ Header: 'Strategy', accessor: 'leftField' }] }, //https://kf-qa.netlify.com/participant/PT_3FV3E420#summary
+      { Header: '', columns: [{ Header: 'Strategy', accessor: 'leftField' }] }, //https://kf-qa.netlify.app/participant/PT_3FV3E420#summary
       {
         Header: 'Source',
         columns: [
           { Header: 'Unaligned Reads', accessor: 'source.unalignedreads' },
-          { Header: 'Aligned Reads', accessor: 'source.alignedreads' }, //https://kf-qa.netlify.com/participant/PT_3DPEF7PD#summary a les 2
+          { Header: 'Aligned Reads', accessor: 'source.alignedreads' }, //https://kf-qa.netlify.app/participant/PT_3DPEF7PD#summary a les 2
           { Header: 'gVCF', accessor: 'source.gvcf' },
           { Header: 'Variant Calls', accessor: 'source.variantcalls' },
         ],
@@ -130,7 +130,7 @@ class SequencingDataTable extends React.Component {
           /*
           Some have no experiment strategy (no node!). We're thus testing to see if there's one.
 
-          https://kf-qa.netlify.com/participant/PT_3FV3E420#summary
+          https://kf-qa.netlify.app/participant/PT_3FV3E420#summary
            */
           let correctRow = null;
           try {
